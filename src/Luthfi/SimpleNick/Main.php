@@ -14,11 +14,7 @@ class Main extends PluginBase {
         $this->saveDefaultConfig();
         $this->defaultPermission = $this->getConfig()->get("default", false);
 
-        if ($this->defaultPermission) {
-            $this->getServer()->getCommandMap()->register("nick", new \Luthfi\SimpleNick\commands\NickCommand($this, true));
-        } else {
-            $this->getServer()->getCommandMap()->register("nick", new \Luthfi\SimpleNick\commands\NickCommand($this, false));
-        }
+        $this->getServer()->getCommandMap()->register("nick", new \Luthfi\SimpleNick\commands\NickCommand($this->defaultPermission));
 
         $this->getLogger()->info("SimpleNick Enabled");
     }
