@@ -1,0 +1,14 @@
+name: SimpleNick
+main: Luthfi\SimpleNick\Main
+version: 1.0.0
+api: 5.0.0
+author: Luthfi
+commands:
+  nick:
+    description: Change your nickname
+    usage: "/nick <nickname>"
+    permission: sn.use
+permissions:
+  sn.use:
+    description: Allows the use /nick command
+    default: op
