@@ -8,16 +8,13 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
-use Luthfi\SimpleNick\Main;
 
 class NickCommand extends Command {
 
-    private Main $plugin;
     private bool $defaultPermission;
 
-    public function __construct(Main $plugin, bool $defaultPermission) {
+    public function __construct(bool $defaultPermission) {
         parent::__construct("nick", "Change your nickname", "/nick <nickname>", []);
-        $this->plugin = $plugin;
         $this->defaultPermission = $defaultPermission;
 
         if ($defaultPermission) {
