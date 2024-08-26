@@ -13,12 +13,14 @@ use Luthfi\SimpleNick\Main;
 class UnnickCommand extends Command {
 
     private array $messages;
+    private Main $plugin;
 
-    public function __construct(array $messages) {
+    public function __construct(Main $plugin, array $messages) {
         parent::__construct("unnick", "Reset your nickname", "/unnick", []);
         $this->setPermission("sn.unnick");
 
         $this->messages = $messages;
+        $this->plugin = $plugin;
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
@@ -32,15 +34,11 @@ class UnnickCommand extends Command {
             return false;
         }
 
-        $defaultNickname = $this->getPlugin()->getDefaultNickname();
-        $nickname = str_replace("{player_name}", $sender->getName(), $defaultNickname);
-        $sender->setDisplayName($nickname);
-        $sender->sendMessage(TextFormat::GREEN . str_replace("{default_nickname}", $nickname, $this->messages['nick_reset'] ?? "Your nickname has been reset to your default name: {default_nickname}."));
+        $defaultNickname = $this->plugin->getConfig()->get("default_nickname", $sender->getName());
+        $sender->setDisplayName($defaultNickname);
+
+        $sender->sendMessage(TextFormat::GREEN . str_replace("{default_nickname}", $defaultNickname, $this->messages['nick_reset'] ?? "Your nickname has been reset to your default name: {default_nickname}."));
 
         return true;
-    }
-
-    private function getPlugin(): Main {
-        return Main::getInstance();
     }
 }
