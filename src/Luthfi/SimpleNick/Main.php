@@ -23,7 +23,7 @@ class Main extends PluginBase {
         $this->getServer()->getCommandMap()->register("nick", new \Luthfi\SimpleNick\commands\NickCommand(
             $this->maxNicknameLength,
             $this->allowedCharacters,
-            $this->.messages
+            $this->messages
         ));
 
         $this->getServer()->getCommandMap()->register("unnick", new \Luthfi\SimpleNick\commands\UnnickCommand(
