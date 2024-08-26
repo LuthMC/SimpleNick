@@ -16,7 +16,7 @@ class UnnickCommand extends Command {
     private Main $plugin;
 
     public function __construct(Main $plugin, array $messages) {
-        parent::__construct("unnick", "Reset your nickname", "/unnick", []);
+        parent::__construct("unnick", "Reset your nickname", "/unnick");
         $this->setPermission("sn.unnick");
 
         $this->messages = $messages;
