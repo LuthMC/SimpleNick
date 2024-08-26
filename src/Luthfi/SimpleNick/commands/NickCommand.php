@@ -18,7 +18,7 @@ class NickCommand extends Command {
     private Main $plugin;
 
     public function __construct(Main $plugin, int $maxNicknameLength, string $allowedCharacters, array $messages) {
-        parent::__construct("nick", "Change your nickname", "/nick <nickname>", []);
+        parent::__construct("nick", "Change your nickname", "/nick <nickname>");
         $this->setPermission("sn.use");
 
         $this->maxNicknameLength = $maxNicknameLength;
