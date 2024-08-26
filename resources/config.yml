@@ -1,3 +1,14 @@
 # SimpleNick Configuration
+# Github: https://github.com/LuthMC/SimpleNick
 
-default: false
+max_nickname_length: 16
+
+allowed_characters: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+messages:
+  nick_change: "Your nickname has been changed to {nickname}."
+  nick_reset: "Your nickname has been reset to your default name: {default_nickname}."
+  no_permission: "You do not have permission to use this command."
+  in_game_only: "This command can only be used in-game."
+  invalid_length: "Nickname is too long. Maximum length is {max_length} characters."
+  invalid_characters: "Your nickname contains invalid characters."
