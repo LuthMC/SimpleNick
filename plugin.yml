@@ -3,12 +3,19 @@ main: Luthfi\SimpleNick\Main
 version: 1.0.0
 api: 5.0.0
 author: Luthfi
+website: https://github.com/LuthMC/SimpleNick
 commands:
   nick:
     description: Change your nickname
     usage: "/nick <nickname>"
     permission: sn.use
+  unnick:
+    description: Reset your nickname
+    permission: sn.unnick
 permissions:
   sn.use:
-    description: Allows the use /nick command
+    description: Allows use /nick command
+    default: op
+  sn.unnick:
+    description: Allows use /unnick command
     default: op
