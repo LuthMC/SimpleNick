@@ -15,14 +15,16 @@ class NickCommand extends Command {
     private int $maxNicknameLength;
     private string $allowedCharacters;
     private array $messages;
+    private Main $plugin;
 
-    public function __construct(int $maxNicknameLength, string $allowedCharacters, array $messages) {
+    public function __construct(Main $plugin, int $maxNicknameLength, string $allowedCharacters, array $messages) {
         parent::__construct("nick", "Change your nickname", "/nick <nickname>", []);
         $this->setPermission("sn.use");
 
         $this->maxNicknameLength = $maxNicknameLength;
         $this->allowedCharacters = $allowedCharacters;
         $this->messages = $messages;
+        $this->plugin = $plugin;
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
@@ -54,6 +56,7 @@ class NickCommand extends Command {
         }
 
         $sender->setDisplayName($nickname);
+
         $sender->sendMessage(TextFormat::GREEN . str_replace("{nickname}", $nickname, $this->messages['nick_change'] ?? "Your nickname has been changed to {nickname}."));
 
         return true;
