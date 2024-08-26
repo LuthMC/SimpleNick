@@ -27,12 +27,12 @@ class NickCommand extends Command {
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
         if (!$sender instanceof Player) {
-            $sender->sendMessage(TextFormat::RED . $this->messages['in_game_only'] ?? "This command can only be used in-game.");
+            $sender->sendMessage(TextFormat::RED . ($this->messages['in_game_only'] ?? "This command can only be used in-game."));
             return false;
         }
 
         if (!$this->testPermission($sender)) {
-            $sender->sendMessage(TextFormat::RED . $this->messages['no_permission'] ?? "You do not have permission to use this command.");
+            $sender->sendMessage(TextFormat::RED . ($this->messages['no_permission'] ?? "You do not have permission to use this command."));
             return false;
         }
 
